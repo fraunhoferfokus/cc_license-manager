@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: models/LicenseDefinition/LicenseDefinitionSchema.2_1.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: models/LicenseDefinition/LicenseDefinitionSchema.2_1.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";
+/* -----------------------------------------------------------------------------
+ *  Copyright (c) 2023, Fraunhofer-Gesellschaft zur Förderung der angewandten Forschung e.V.
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as published by
+ *  the Free Software Foundation, version 3.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ *  GNU Affero General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with this program. If not, see <https://www.gnu.org/licenses/>.  
+ *
+ *  No Patent Rights, Trademark Rights and/or other Intellectual Property
+ *  Rights other than the rights under this license are granted.
+ *  All other rights reserved.
+ *
+ *  For any other rights, a separate agreement needs to be closed.
+ *
+ *  For more information please contact:  
+ *  Fraunhofer FOKUS
+ *  Kaiserin-Augusta-Allee 31
+ *  10589 Berlin, Germany
+ *  https://www.fokus.fraunhofer.de/go/fame
+ *  famecontact@fokus.fraunhofer.de
+ * -----------------------------------------------------------------------------
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * ODRL Version 2.1 JSON Encoding
+ * @description ODRL JSON Schema (Final 5 March 2015)
+ * @see {@link https://www.w3.org/community/odrl/json/2.1/}
+ * @see {@link https://www.w3.org/community/odrl/json/2.1/#section-Schema}
+ */
+const LicenseDefinitionSchema = {
+    title: 'ODRL JSON Schema',
+    description: 'ODRL JSON Schema (Final 5 March 2015)',
+    $id: 'http://www.w3.org/ns/odrl/2/jsonschema#',
+    type: 'object',
+    definitions: {
+        Constraint: {
+            type: 'array',
+            items: {
+                type: 'object',
+                required: [
+                    'name',
+                    'operator',
+                    'rightoperand',
+                ],
+                properties: {
+                    name: {
+                        type: 'string',
+                        format: 'uri',
+                    },
+                    operator: {
+                        type: 'string',
+                        format: 'uri',
+                    },
+                    rightoperand: {
+                        type: 'string',
+                    },
+                    rightoperanddatatype: {
+                        type: 'string',
+                    },
+                    rightoperandunit: {
+                        type: 'string',
+                    },
+                    status: {
+                        type: 'string',
+                    },
+                },
+            },
+        },
+        Prohibdutytype: {
+            type: 'array',
+            items: {
+                type: 'object',
+                required: [
+                    'action',
+                ],
+                properties: {
+                    assigner: {
+                        type: 'string',
+                        format: 'uri',
+                    },
+                    assignee: {
+                        type: 'string',
+                        format: 'uri',
+                    },
+                    assignee_scope: {
+                        type: 'string',
+                        format: 'uri',
+                    },
+                    target: {
+                        type: 'string',
+                        format: 'uri',
+                    },
+                    output: {
+                        type: 'string',
+                        format: 'uri',
+                    },
+                    action: {
+                        type: 'string',
+                        format: 'uri',
+                    },
+                    constraints: {
+                        $ref: '#/definitions/Constraint',
+                    },
+                },
+            },
+        },
+        Permission: {
+            type: 'array',
+            items: {
+                type: 'object',
+                required: [
+                    'action',
+                ],
+                properties: {
+                    assigner: {
+                        type: 'string',
+                        format: 'uri',
+                    },
+                    assignee: {
+                        type: 'string',
+                        format: 'uri',
+                    },
+                    assignee_scope: {
+                        type: 'string',
+                        format: 'uri',
+                    },
+                    target: {
+                        type: 'string',
+                        format: 'uri',
+                    },
+                    output: {
+                        type: 'string',
+                        format: 'uri',
+                    },
+                    action: {
+                        type: 'string',
+                        format: 'uri',
+                    },
+                    constraints: {
+                        $ref: '#/definitions/Constraint',
+                    },
+                    duties: {
+                        $ref: '#/definitions/Prohibdutytype',
+                    },
+                },
+            },
+        },
+        JsonDate: {
+            type: 'string',
+            xreviver: 'JsonDate',
+        },
+        JsonPromise: {
+            type: 'string',
+            xreviver: 'JsonPromise',
+        },
+    },
+    required: [
+        'policyid',
+        'policytype',
+    ],
+    properties: {
+        policyid: {
+            type: 'string',
+            format: 'uri',
+        },
+        policytype: {
+            type: 'string',
+            format: 'uri',
+        },
+        conflict: {
+            type: 'string',
+            enum: [
+                'perm',
+                'prohibit',
+                'invalid',
+            ],
+            nullable: true,
+        },
+        undefined: {
+            type: 'string',
+            enum: [
+                'support',
+                'ignore',
+                'invalid',
+            ],
+            nullable: true,
+        },
+        inheritallowed: {
+            type: 'boolean',
+            nullable: true,
+        },
+        inheritfrom: {
+            type: 'string',
+            format: 'uri',
+            nullable: true,
+        },
+        inheritrelation: {
+            type: 'string',
+            format: 'uri',
+            nullable: true,
+        },
+        policyprofile: {
+            type: 'string',
+            format: 'uri',
+            nullable: true,
+        },
+        permissions: {
+            $ref: '#/definitions/Permission',
+        },
+        prohibitions: {
+            $ref: '#/definitions/Prohibdutytype',
+        },
+        _id: {
+            type: 'string',
+            minLength: 1,
+            maxLength: 255,
+        },
+        _rev: {
+            type: 'string',
+            minLength: 1,
+            maxLength: 255,
+            nullable: true,
+        },
+        createdAt: {
+            $ref: '#/definitions/JsonDate',
+        },
+        updatedAt: {
+            $ref: '#/definitions/JsonDate',
+        },
+        executeAfterCreateDependencies: {
+            $ref: '#/definitions/JsonPromise',
+        },
+        executeAfterDeleteDependencies: {
+            $ref: '#/definitions/JsonPromise',
+        },
+        beforeInsert: {
+            $ref: '#/definitions/JsonPromise',
+        },
+        beforeUpdate: {
+            $ref: '#/definitions/JsonPromise',
+        },
+    },
+    additionalProperties: false,
+};
+exports.default = LicenseDefinitionSchema;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="LicenseDefinitionBDTO.html">LicenseDefinitionBDTO</a></li><li><a href="LicenseDefinitionFDTO.html">LicenseDefinitionFDTO</a></li><li><a href="LicenseDefinitionModel.html">LicenseDefinitionModel</a></li><li><a href="LicenseInformationBDTO.html">LicenseInformationBDTO</a></li><li><a href="LicenseInformationModel.html">LicenseInformationModel</a></li></ul><h3>Global</h3><ul><li><a href="global.html#LicenseDefinitionBDTOInstance">LicenseDefinitionBDTOInstance</a></li><li><a href="global.html#LicenseDefinitionSchema">LicenseDefinitionSchema</a></li><li><a href="global.html#LicenseInformationBDTOInstance">LicenseInformationBDTOInstance</a></li><li><a href="global.html#__awaiter">__awaiter</a></li><li><a href="global.html#__createBinding">__createBinding</a></li><li><a href="global.html#__importDefault">__importDefault</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Thu Feb 02 2023 03:39:00 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

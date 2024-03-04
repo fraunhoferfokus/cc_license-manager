@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: models/LicenseInformation/LicenseInformationModel.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: models/LicenseInformation/LicenseInformationModel.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>"use strict";
+/* -----------------------------------------------------------------------------
+ *  Copyright (c) 2023, Fraunhofer-Gesellschaft zur Förderung der angewandten Forschung e.V.
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU Affero General Public License as published by
+ *  the Free Software Foundation, version 3.
+ *
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ *  GNU Affero General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Affero General Public License
+ *  along with this program. If not, see <https://www.gnu.org/licenses/>.  
+ *
+ *  No Patent Rights, Trademark Rights and/or other Intellectual Property
+ *  Rights other than the rights under this license are granted.
+ *  All other rights reserved.
+ *
+ *  For any other rights, a separate agreement needs to be closed.
+ *
+ *  For more information please contact:  
+ *  Fraunhofer FOKUS
+ *  Kaiserin-Augusta-Allee 31
+ *  10589 Berlin, Germany
+ *  https://www.fokus.fraunhofer.de/go/fame
+ *  famecontact@fokus.fraunhofer.de
+ * -----------------------------------------------------------------------------
+ */
+Object.defineProperty(exports, "__esModule", { value: true });
+const clm_core_1 = require("clm-core");
+/**
+ * LicenseInformation datamodel which is used by {@link LicenseInformationBDTO}
+ * @public
+ */
+class LicenseInformationModel extends clm_core_1.BaseDatamodel {
+    constructor(payload) {
+        super(payload);
+        this._id = payload.lizenzcode;
+        this.lizenzcode = payload.lizenzcode;
+        this.product_id = payload.product_id;
+        this.lizenzanzahl = payload.lizenzanzahl;
+        this.lizenzgeber = payload.lizenzgeber;
+        if (payload.kaufreferenz) {
+            this.kaufreferenz = payload.kaufreferenz;
+        }
+        if (payload.school_identifier) {
+            this.school_identifier = payload.school_identifier;
+        }
+        if (payload.nutzungssysteme) {
+            this.nutzungssysteme = payload.nutzungssysteme;
+        }
+        if (payload.gueltigkeitsbeginn) {
+            this.gueltigkeitsbeginn = payload.gueltigkeitsbeginn;
+        }
+        if (payload.gueltigkeitsende) {
+            this.gueltigkeitsende = payload.gueltigkeitsende;
+        }
+        if (payload.gueltigkeitsdauer) {
+            this.gueltigkeitsdauer = payload.gueltigkeitsdauer;
+        }
+        if (payload.sonderlizenz) {
+            this.sonderlizenz = payload.sonderlizenz;
+        }
+        if (payload.lizenztyp) {
+            this.lizenztyp = payload.lizenztyp;
+        }
+    }
+}
+exports.default = LicenseInformationModel;
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     LicenseInformation:
+ *       type: object
+ *       required:
+ *         - lizenzcode
+ *         - product_id
+ *         - lizenzanzahl
+ *         - lizenzgeber
+ *         - lizenztyp
+ *       properties:
+ *         _id:
+ *           type: string
+ *         lizenzcode:
+ *           type: string
+ *         product_id:
+ *           type: string
+ *         lizenzanzahl:
+ *           type: number
+ *           minValue: 0
+ *         lizenzgeber:
+ *           type: string
+ *         kaufreferenz:
+ *           type: string
+ *         school_identifier:
+ *           type: string
+ *         nutzungssysteme:
+ *           type: string
+ *         gueltigkeitsbeginn:
+ *           type: string
+ *         gueltigkeitsende:
+ *           type: string
+ *         gueltigkeitsdauer:
+ *           type: string
+ *         sonderlizenz:
+ *           type: string
+ *           enum:
+ *             - 'Demo'
+ *             - 'Lehrkraft'
+ *         lizenztyp:
+ *           type: string
+ *           enum:
+ *             - 'Schullizenz'
+ *             - 'Gruppenlizenz'
+ *             - 'Volumenlizenz'
+ *             - 'Einzellizenz'
+ *       xml:
+ *         name: LicenseInformation
+ *       additionalProperties: false
+ */
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="LicenseDefinitionBDTO.html">LicenseDefinitionBDTO</a></li><li><a href="LicenseDefinitionFDTO.html">LicenseDefinitionFDTO</a></li><li><a href="LicenseDefinitionModel.html">LicenseDefinitionModel</a></li><li><a href="LicenseInformationBDTO.html">LicenseInformationBDTO</a></li><li><a href="LicenseInformationModel.html">LicenseInformationModel</a></li></ul><h3>Global</h3><ul><li><a href="global.html#LicenseDefinitionBDTOInstance">LicenseDefinitionBDTOInstance</a></li><li><a href="global.html#LicenseDefinitionSchema">LicenseDefinitionSchema</a></li><li><a href="global.html#LicenseInformationBDTOInstance">LicenseInformationBDTOInstance</a></li><li><a href="global.html#__awaiter">__awaiter</a></li><li><a href="global.html#__createBinding">__createBinding</a></li><li><a href="global.html#__importDefault">__importDefault</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Thu Feb 02 2023 03:39:00 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

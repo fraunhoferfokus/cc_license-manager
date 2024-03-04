@@ -1,0 +1,325 @@
+openapi: 3.0.0
+info:
+  title: license_manager
+  description: License-definition manager
+  version: 0.1.5
+paths:
+  /licenseDefinitions:
+    post:
+      description: Create License-definition object
+      tags:
+        - LicenseDefinitions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LicenseDefinition'
+      responses:
+        '204':
+          description: No Content.
+        '400':
+          description: Bad Request.
+        '409':
+          description: Conflict.
+        '500':
+          description: Internal Server Error.
+    get:
+      description: Request list of License-definition objects
+      tags:
+        - LicenseDefinitions
+      parameters:
+        - in: query
+          name: policyid
+          description: Filter by Policy-Id
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK - Returns a list of License-definition objects.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LicenseDefinition'
+        '500':
+          description: Internal Server Error.
+  /licenseDefinitions/{licenseDefinitionId}:
+    get:
+      description: Request License-definition object by License-definition-Id
+      tags:
+        - LicenseDefinitions
+      parameters:
+        - in: path
+          name: licenseDefinitionId
+          description: License-definition with specific Policy-Id
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK - Returns a License-definition object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LicenseDefinition'
+        '404':
+          description: Not found.
+        '500':
+          description: Internal Server Error.
+  /licenseInformations/import/{ticketId}:
+    get:
+      description: >-
+        Fetches License-information objects from external source by Ticket-Id
+        (Download-Id) and creates them. Also creates the according
+        License-definition objects.
+      tags:
+        - LicenseInformations
+      parameters:
+        - in: path
+          name: ticketId
+          description: License-information objects with specific Ticket-Id (Download-Id)
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK - Returns a list of License-information-Ids.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '400':
+          description: Bad Request.
+        '409':
+          description: Conflict.
+        '500':
+          description: Internal Server Error.
+  /licenseInformations:
+    post:
+      description: >-
+        Create License-information object. Also creates according
+        License-definition object.
+      tags:
+        - LicenseInformations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LicenseInformation'
+      responses:
+        '204':
+          description: No Content.
+        '400':
+          description: Bad Request.
+        '409':
+          description: Conflict.
+        '500':
+          description: Internal Server Error.
+  /licenseInformations/{licenseInformationId}:
+    delete:
+      description: >-
+        Deletes License-information object by License-information-Id. Also
+        deletes according License-definition object.
+      tags:
+        - LicenseInformations
+      parameters:
+        - in: path
+          name: licenseInformationId
+          description: License-information with specific License-information-Id
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: No Content.
+        '404':
+          description: Not found.
+        '500':
+          description: Internal Server Error.
+components:
+  schemas:
+    Constraint:
+      type: object
+      required:
+        - name
+        - operator
+        - rightoperand
+      properties:
+        name:
+          type: string
+        operator:
+          type: string
+        rightoperand:
+          type: string
+        rightoperanddatatype:
+          type: string
+        rightoperandunit:
+          type: string
+        status:
+          type: string
+      xml:
+        name: Constraint
+      additionalProperties: false
+    Prohibdutytype:
+      type: object
+      required:
+        - action
+      properties:
+        assigner:
+          type: string
+        assignee:
+          type: string
+        assignee_scope:
+          type: string
+        target:
+          type: string
+        output:
+          type: string
+        action:
+          type: string
+        constraints:
+          type: array
+          items:
+            $ref: '#/components/schemas/Constraint'
+      xml:
+        name: Prohibdutytype
+      additionalProperties: false
+    Permission:
+      type: object
+      required:
+        - action
+      properties:
+        assigner:
+          type: string
+        assigner_scope:
+          type: string
+        assignee:
+          type: string
+        target:
+          type: string
+        output:
+          type: string
+        action:
+          type: string
+        constraints:
+          type: array
+          items:
+            $ref: '#/components/schemas/Constraint'
+        duties:
+          type: array
+          items:
+            $ref: '#/components/schemas/Prohibdutytype'
+      xml:
+        name: Permission
+      additionalProperties: false
+    LicenseDefinition:
+      type: object
+      required:
+        - policyid
+        - policytype
+        - policyid
+        - policyid
+      properties:
+        _is:
+          type: string
+        policyid:
+          type: string
+        policytype:
+          type: string
+        conflict:
+          type: string
+          enum:
+            - perm
+            - prohibit
+            - invalid
+        undefined:
+          type: string
+          enum:
+            - invalid
+            - support
+            - ignore
+        inheritallowed:
+          type: boolean
+        inheritfrom:
+          type: string
+        inheritrelation:
+          type: string
+        policyprofile:
+          type: string
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Permission'
+        prohibitions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Prohibdutytype'
+      xml:
+        name: LicenseDefinition
+      additionalProperties: false
+    LicenseInformation:
+      type: object
+      required:
+        - lizenzcode
+        - product_id
+        - lizenzanzahl
+        - lizenzgeber
+        - lizenztyp
+      properties:
+        _id:
+          type: string
+        lizenzcode:
+          type: string
+        product_id:
+          type: string
+        lizenzanzahl:
+          type: number
+          minValue: 0
+        lizenzgeber:
+          type: string
+        kaufreferenz:
+          type: string
+        school_identifier:
+          type: string
+        nutzungssysteme:
+          type: string
+        gueltigkeitsbeginn:
+          type: string
+        gueltigkeitsende:
+          type: string
+        gueltigkeitsdauer:
+          type: string
+        sonderlizenz:
+          type: string
+          enum:
+            - Demo
+            - Lehrkraft
+        lizenztyp:
+          type: string
+          enum:
+            - Schullizenz
+            - Gruppenlizenz
+            - Volumenlizenz
+            - Einzellizenz
+      xml:
+        name: LicenseInformation
+      additionalProperties: false
+tags: []
+servers:
+  - url: '{protocol}://{host}:{port}{basePath}'
+    description: Server definition from .env file
+    variables:
+      protocol:
+        default: http
+      host:
+        default: 127.0.0.1
+      port:
+        default: '3092'
+      basePath:
+        default: ''

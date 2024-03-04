@@ -1,0 +1,15 @@
+├─ MIT: 513
+├─ ISC: 52
+├─ Apache-2.0: 24
+├─ BSD-3-Clause: 18
+├─ BSD-2-Clause: 7
+├─ MIT*: 2
+├─ Python-2.0: 1
+├─ CC-BY-4.0: 1
+├─ Custom: http://localhost: 1
+├─ Unlicense: 1
+├─ CC-BY-3.0: 1
+├─ CC0-1.0: 1
+├─ (MIT AND CC-BY-3.0): 1
+├─ 0BSD: 1
+└─ (MIT OR CC0-1.0): 1
