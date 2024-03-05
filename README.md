@@ -25,7 +25,7 @@ Install node_modules in the respective git submodules with their respective depe
 It is also necessary to copy .env.default file to .env and insert the appropriate values. Please contact the owner of this repository to the values. A description of the values is also given in the file itself.
 
 (UNIX)
-```cp .env.default .env.local```
+```cp .env.default .env```
 
 The following table gives an overview of the settings you can change through the environment variables:
 
@@ -51,7 +51,7 @@ The following table gives an overview of the settings you can change through the
 | `KEYCLOAK_EXCHANGE_TOKEN_ENDPOINT`            |                                                  | Yes               | The token exchange endpoint for Keycloak.                                                             |
 | `SANIS_CLIENT_ID`                             |                                                  | Yes               | The client ID for SANIS (now referred to as moin.schule), if applicable.                              |
 | `SANIS_CLIENT_SECRET`                         |                                                  | Yes               | The client secret for SANIS (now referred to as moin.schule).                                         |
-
+| `REDIS_URL`                         |                                                  | Yes               | The url to connect to the redis database                                         |
 
 Afterward just startup the server with following command:
 
