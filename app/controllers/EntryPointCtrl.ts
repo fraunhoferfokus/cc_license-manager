@@ -35,12 +35,7 @@ import express from 'express'
 import LicenseDefinitionsCtrl from './LicenseDefinitionsCtrl'
 import LicenseInformationsCtrl from './LicenseInformationsCtrl'
 
-const BASE_PATH: string = (process.env.BASE_PATH)
-    ? (process.env.BASE_PATH.indexOf('/') == 0)
-        ? process.env.BASE_PATH
-        : '/' + process.env.BASE_PATH
-    : ''
-
+const BASE_PATH: string = process.env.BASE_PATH || '/license_manager'
 const EntryPointController = express.Router()
 
 EntryPointController.use(`${BASE_PATH}/licenseDefinitions`, LicenseDefinitionsCtrl.router)
