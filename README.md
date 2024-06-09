@@ -6,14 +6,14 @@
 
 Component for managing license definitions (license agreement) based on ODRL (currently in version 2.2).
 
-Allows the import of external license definitions. Via plugin: Allows the import of BiLo license information; converts it into a license definition based on ODRL.
+Allows the import of external license definitions. Via plugin: Allows the import of BILDUNGSLOGIN license information; converts it into a license definition based on ODRL.
 
 # Requirements:
 * MariaDB Version 10x
 * Redis Version 6x
 * Node.js Version 20x
 * [moin.schule](https://www.n-21.de/portal/seiten/moin-schule-900000111-10056.html) (OIDC) authentication service credentials 
-* [BiLo](https://info.bildungslogin.de/) (OIDC) authentication service credentials for extracting license informations
+* [BILDUNGSLOGIN](https://info.bildungslogin.de/) (OIDC) authentication service credentials for extracting license informations
 
 # Quick Start:
 
@@ -42,10 +42,10 @@ The following table gives an overview of the settings you can change through the
 | `LICENSE_INFORMATION_PROVIDER_API_HOST`       | `127.0.0.1`                                      | Yes               | The host address for the license information provider API.                                            |
 | `LICENSE_INFORMATION_PROVIDER_API_PORT`       | `3091`                                           | Yes               | The port on which the license information provider API is running.                                    |
 | `LICENSE_INFORMATION_PROVIDER_API_BASE_PATH`  | `/services/licenses/licenseInformations/download`| Yes               | The base path for the license information provider API's endpoints.                                   |
-| `OIDC_BILO_CLIENT_ID`                         |                                                  | Yes                | The client ID for OIDC BILO authentication.                                                           |
-| `OIDC_BILO_CLIENT_SECRET`                     |                                                  | Yes               | The client secret for OIDC BILO authentication.                                                       |
-| `OIDC_AUTH_BILO_ENDPOINT`                     |                                                  | Yes               | The authentication endpoint for OIDC BILO.                                                            |
-| `LICENSE_BILO_API`                            |                                                  | Yes               | The API endpoint for BILO license operations.                                                         |
+| `OIDC_BILO_CLIENT_ID`                         |                                                  | Yes                | The client ID for OIDC BILDUNGSLOGIN authentication.                                                           |
+| `OIDC_BILO_CLIENT_SECRET`                     |                                                  | Yes               | The client secret for OIDC BILDUNGSLOGIN authentication.                                                       |
+| `OIDC_AUTH_BILO_ENDPOINT`                     |                                                  | Yes               | The authentication endpoint for OIDC BILDUNGSLOGIN.                                                            |
+| `LICENSE_BILO_API`                            |                                                  | Yes               | The API endpoint for BILDUNGSLOGIN license operations.                                                         |
 | `SANIS_TOKEN_ENDPOINT`                        |                                                  | Yes               | The token endpoint for SANIS (now referred to as moin.schule).                                        |
 | `SANIS_USERINFO_ENDPOINT`                     |                                                  | Yes               | The user info endpoint for SANIS (now referred to as moin.schule).                                    |
 | `KEYCLOAK_EXCHANGE_TOKEN_ENDPOINT`            |                                                  | Yes               | The token exchange endpoint for Keycloak.                                                             |
