@@ -8,16 +8,18 @@ Component for managing license definitions (license agreement) based on ODRL (cu
 
 Allows the import of external license definitions. Via plugin: Allows the import of BILDUNGSLOGIN license information; converts it into a license definition based on ODRL.
 
+# Dependencies
+## License Package Service
+* To be able to import License Information from BILDUNGSLOGIN, relevant service credentials are required. These are required to query the corresponding API. More details: partners/BILDUNGSLOGIN.md
+## Service Authentication
+* To be able to authorize license imports, relevant service credentuals are required. More details: partners/N21.md
+
 # Requirements:
 * MariaDB Version 10x
 * Redis Version 6x
 * Node.js Version 20x
-* [moin.schule](https://www.n-21.de/portal/seiten/moin-schule-900000111-10056.html) (OIDC) authentication service credentials 
-* [BILDUNGSLOGIN](https://info.bildungslogin.de/) (OIDC) authentication service credentials for extracting license informations
 
 # Quick Start:
-
-
 Install node_modules in the respective git submodules with their respective dependencies by running: 
 
 ```npm install```
