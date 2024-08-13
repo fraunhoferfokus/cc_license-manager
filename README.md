@@ -10,9 +10,9 @@ Allows the import of external license definitions. Via plugin: Allows the import
 
 # Dependencies
 ## License Package Service
-* To be able to import License Information from BILDUNGSLOGIN, relevant service credentials are required. These are required to query the corresponding API. More details: partners/BILDUNGSLOGIN.md
+* To be able to import License Information from BILDUNGSLOGIN, relevant service credentials are required. These are required to query the corresponding API. More details: [partners/BILDUNGSLOGIN.md](./partners/BILDUNGSLOGIN.md)
 ## Service Authentication
-* To be able to authorize license imports, relevant service credentuals are required. More details: partners/N21.md
+* To be able to authorize license imports, relevant service credentuals are required. More details: [partners/n-21.md](./partners/n-21.md)
 
 # Requirements:
 * MariaDB Version 10x
